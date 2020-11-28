@@ -1,9 +1,112 @@
 .header {
-  height: 30px;
+  display: flex;
+  justify-content: space-between;
   width: calc(100% - #{$sidebar-width});
-  background: #444;
+  background: $black;
+  box-shadow: 0px 5px 22px rgba(#000, .25);
   position: fixed;
   top: 0;
   right: 0;
   z-index: $z-index-header;
+
+  &__left {
+    width: 60%;
+  }
+
+  &__right {
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+.nav {
+  position: relative;
+
+  &__item {
+    &:hover > .nav__link {
+      background: $blue;
+    }
+    &:hover > .subnav {
+      display: block;
+    }
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__link {
+    display: block;
+    font-size: 1.1rem;
+    color: $white;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.35rem;
+    line-height: 1.2;
+    transition: background-color .2s linear;
+  }
+
+  .has-subnav {
+    position: relative;
+    padding-right: 3.3rem;
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: 1.25rem;
+      transform: translateY(-40%);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 6px 5px 0 5px;
+      border-color: $white transparent transparent transparent;
+    }
+  }
+}
+.search {
+  width: 100%;
+  max-width: 21rem;
+  background: $primary;
+
+  &__input {
+    display: block;
+    width: 100%;
+    margin-top: 2px;
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    font-family: inherit;
+    color: $white;
+    padding: 1.2rem 2rem;
+
+    &::placeholder {
+      color: rgba($white, .4);
+    }
+  }
+}
+.subnav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  legt: 0;
+  width: 16.5rem;
+  background: $blue;
+  border-radius: 0 0 5px 5px;
+  padding: 1rem 0;
+  box-shadow: 0 6px 8px rgba($black, .2);
+
+  &__link {
+    display: block;
+    padding: .5rem 1.25rem;
+    color: $white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: background .2s ease;
+
+    &:hover {
+      background: darken($blue, 5%);
+    }
+  }
 }
